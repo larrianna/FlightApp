@@ -1,0 +1,11 @@
+# Verify search returns no itineraries when nothing matches.
+
+# commands to execute:
+search "Tijuana, MX" "Seattle, WA" 1 2 3
+quit
+*
+
+# expected output:
+No flights match your selection
+Goodbye
+*

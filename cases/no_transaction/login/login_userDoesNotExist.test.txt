@@ -1,0 +1,11 @@
+# Verify login fails for a user that does not exist.
+
+# commands to execute:
+login test_user password123
+quit
+*
+
+# expected output:
+Login failed
+Goodbye
+*

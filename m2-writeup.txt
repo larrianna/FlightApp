@@ -1,0 +1,29 @@
+Reflection:
+    Very useful for coding and race conditions:
+        1. Literally solved the race conditons for me: https://docs.oracle.com/javadb/10.8.3.0/ref/rrefsqlj40506.html
+        2. Saw someone talk about locking levels here: https://www.reddit.com/r/PowerApps/comments/1r85nf8/best_strategy_to_prevent_double_bookings_race/
+        3. Saw on ed stem: https://docs.oracle.com/javadb/10.10.1.2/ref/rrefjavcsti.html
+        4. Rollback and setautocommit: https://docs.google.com/presentation/d/1ZqYJBIKYh9ljOdfAfwhjecwe4VdKH7by/edit?slide=id.g3ca9369e631_3_100#slide=id.g3ca9369e631_3_100
+    Generally useful:
+        6. https://edstem.org/us/courses/90071/discussion/7725801
+        5. stuff on transactions: https://drive.google.com/file/d/1VKuH8z_EA9A97buMkEjtP86cVeqwDZQs/view
+        7. https://edstem.org/us/courses/90071/discussion/7703883
+        8. https://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#sort-java.util.List-java.util.Comparator-
+        9. https://uw.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=9eaff0a3-5ef1-44d2-9223-b3c70172ef87
+        Google Search for AI overview because I forgot the syntax: how to use stringbuilder java
+        https://drive.google.com/drive/u/4/folders/1gqoyIp-ZHrEgiuUJDomv05elf3d4JStJ
+
+    I think the pattern here is I need to see actual code to understand what to do. Without seeing that first link I wouldn't have solved the whole race condition thing.
+
+    b. Well, I'm not very proactive in my bug finding so I just wait to test my code and see if I fail any tests before I go looking for bugs. Once I fail a test and read its error message and testname, I go back to the method that has the bug and I go line by line to see exactly what is happening based on what the test is inputting. I found that the race conditions for this part of the project made the bug squashing more difficult for me to conceptualize so I have to draw it out on my iPad what the queries were doing at the same time inthe two terminals. From there I was able to see that both terminals were reading the same value and using that value to make a decision. That was a HUGE no-no so I had to look up online how to make it so I can force only one transaction to happen first and then the next one right after, so no interleaving processessing would happen.
+    c. One thing I learned from M2 was how powerful just googling and reading the JavaDoc is. That first llink I shared literally gave me the answer basically to the interleaving issues with book().
+    d. One thing that suprised me was how complicated these processes can get. I wonder if this is the reason why flights get overbooked?
+    e. This project seems really relavant to the real world and maybe something we might see in our future jobs (fingers crossed) which I really liked. My question is can we have more of these types of projects?
+
+Analytics:
+a. 10-12 hours
+b. 10-12 hours
+c. N/a
+
+Feedback:
+a. I really liked this project actually. The transaction stuff is really good to know.

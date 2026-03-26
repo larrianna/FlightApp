@@ -1,0 +1,15 @@
+# A logged in user with no bookings should see the no reservations message
+
+# commands to execute:
+create user1 pass 100
+login user1 pass
+reservations
+quit
+*
+
+# expected output:
+Created user user1
+Logged in as user1
+No reservations found
+Goodbye
+*

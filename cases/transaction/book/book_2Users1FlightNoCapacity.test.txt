@@ -1,0 +1,86 @@
+# This tests two different users trying to book the same flight with
+# only 1 seat left. One of them should succeed; the other should fail.
+
+# commands for user1 to execute in the first terminal
+create user1 user1 10000
+login user1 user1
+search "Providence, RI" "Washington, DC" 0 22 4
+book 2
+quit
+*
+
+# Scenario 1 of 2: the first terminal (user1's) succeeds in booking, and the
+# second terminal (user2's) fails
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 78 minutes
+    ID:421020 Day:22 Carrier:WN CarrierNum:2418 Origin:'Providence, RI' Dest:'Washington, DC' Duration:78 Capacity:143 Price:382
+Itinerary 1: 1 flight(s), 81 minutes
+    ID:422121 Day:22 Carrier:WN CarrierNum:824 Origin:'Providence, RI' Dest:'Washington, DC' Duration:81 Capacity:175 Price:194
+Itinerary 2: 1 flight(s), 82 minutes
+    ID:422887 Day:22 Carrier:YX CarrierNum:4545 Origin:'Providence, RI' Dest:'Washington, DC' Duration:82 Capacity:1 Price:567
+Itinerary 3: 1 flight(s), 85 minutes
+    ID:413470 Day:22 Carrier:OH CarrierNum:5138 Origin:'Providence, RI' Dest:'Washington, DC' Duration:85 Capacity:80 Price:115
+Booking failed
+Goodbye
+|   # recall that "|" denotes an alternate outcome scenario
+
+# Scenario 2 of 2: user1 (this terminal) fails to book because
+# user2 (other terminal) succeeded
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 78 minutes
+    ID:421020 Day:22 Carrier:WN CarrierNum:2418 Origin:'Providence, RI' Dest:'Washington, DC' Duration:78 Capacity:143 Price:382
+Itinerary 1: 1 flight(s), 81 minutes
+    ID:422121 Day:22 Carrier:WN CarrierNum:824 Origin:'Providence, RI' Dest:'Washington, DC' Duration:81 Capacity:175 Price:194
+Itinerary 2: 1 flight(s), 82 minutes
+    ID:422887 Day:22 Carrier:YX CarrierNum:4545 Origin:'Providence, RI' Dest:'Washington, DC' Duration:82 Capacity:1 Price:567
+Itinerary 3: 1 flight(s), 85 minutes
+    ID:413470 Day:22 Carrier:OH CarrierNum:5138 Origin:'Providence, RI' Dest:'Washington, DC' Duration:85 Capacity:80 Price:115
+Booked flight(s), reservation ID: 1
+Goodbye
+*
+
+##################### Concurrently executed commands: #####################
+
+# These commands are executed by user2 in a second terminal; user2 is
+# attempting to do the same thing as user1 (ie, book the last seat from
+# Providence to DC)
+create user2 user2 10000
+login user2 user2
+search "Providence, RI" "Washington, DC" 0 22 4
+book 2
+quit
+*
+
+# Scenario 1 of 2: the first terminal (user1's) succeeds in booking, and the
+# second terminal (user2's) fails
+Created user user2
+Logged in as user2
+Itinerary 0: 1 flight(s), 78 minutes
+    ID:421020 Day:22 Carrier:WN CarrierNum:2418 Origin:'Providence, RI' Dest:'Washington, DC' Duration:78 Capacity:143 Price:382
+Itinerary 1: 1 flight(s), 81 minutes
+    ID:422121 Day:22 Carrier:WN CarrierNum:824 Origin:'Providence, RI' Dest:'Washington, DC' Duration:81 Capacity:175 Price:194
+Itinerary 2: 1 flight(s), 82 minutes
+    ID:422887 Day:22 Carrier:YX CarrierNum:4545 Origin:'Providence, RI' Dest:'Washington, DC' Duration:82 Capacity:1 Price:567
+Itinerary 3: 1 flight(s), 85 minutes
+    ID:413470 Day:22 Carrier:OH CarrierNum:5138 Origin:'Providence, RI' Dest:'Washington, DC' Duration:85 Capacity:80 Price:115
+Booked flight(s), reservation ID: 1
+Goodbye
+|
+
+# Scenario 2 of 2: user1 (other terminal) fails to book because
+# user2 (this terminal) succeeded
+Created user user2
+Logged in as user2
+Itinerary 0: 1 flight(s), 78 minutes
+    ID:421020 Day:22 Carrier:WN CarrierNum:2418 Origin:'Providence, RI' Dest:'Washington, DC' Duration:78 Capacity:143 Price:382
+Itinerary 1: 1 flight(s), 81 minutes
+    ID:422121 Day:22 Carrier:WN CarrierNum:824 Origin:'Providence, RI' Dest:'Washington, DC' Duration:81 Capacity:175 Price:194
+Itinerary 2: 1 flight(s), 82 minutes
+    ID:422887 Day:22 Carrier:YX CarrierNum:4545 Origin:'Providence, RI' Dest:'Washington, DC' Duration:82 Capacity:1 Price:567
+Itinerary 3: 1 flight(s), 85 minutes
+    ID:413470 Day:22 Carrier:OH CarrierNum:5138 Origin:'Providence, RI' Dest:'Washington, DC' Duration:85 Capacity:80 Price:115
+Booking failed
+Goodbye
+*

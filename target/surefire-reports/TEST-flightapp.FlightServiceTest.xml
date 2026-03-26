@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="flightapp.FlightServiceTest" time="15.021" tests="15" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/homes/iws/lmswar/.m2/repository/org/apache/maven/surefire/surefire-booter/3.0.0-M5/surefire-booter-3.0.0-M5.jar:/homes/iws/lmswar/.m2/repository/org/apache/maven/surefire/surefire-api/3.0.0-M5/surefire-api-3.0.0-M5.jar:/homes/iws/lmswar/.m2/repository/org/apache/maven/surefire/surefire-logger-api/3.0.0-M5/surefire-logger-api-3.0.0-M5.jar:/homes/iws/lmswar/.m2/repository/org/apache/maven/surefire/surefire-shared-utils/3.0.0-M4/surefire-shared-utils-3.0.0-M4.jar:/homes/iws/lmswar/.m2/repository/org/apache/maven/surefire/surefire-extensions-spi/3.0.0-M5/surefire-extensions-spi-3.0.0-M5.jar:/homes/iws/lmswar/344/flightapp-startercode/target/test-classes:/homes/iws/lmswar/344/flightapp-startercode/target/classes:/homes/iws/lmswar/.m2/repository/junit/junit/4.13/junit-4.13.jar:/homes/iws/lmswar/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/homes/iws/lmswar/.m2/repository/org/postgresql/postgresql/42.7.5/postgresql-42.7.5.jar:/homes/iws/lmswar/.m2/repository/org/checkerframework/checker-qual/3.48.3/checker-qual-3.48.3.jar:/homes/iws/lmswar/.m2/repository/org/mybatis/mybatis/3.5.7/mybatis-3.5.7.jar:/homes/iws/lmswar/.m2/repository/commons-io/commons-io/2.8.0/commons-io-2.8.0.jar:/homes/iws/lmswar/344/flightapp-startercode/distributed.jar:/homes/iws/lmswar/.m2/repository/org/apache/maven/surefire/surefire-junit4/3.0.0-M5/surefire-junit4-3.0.0-M5.jar:/homes/iws/lmswar/.m2/repository/org/apache/maven/surefire/common-java5/3.0.0-M5/common-java5-3.0.0-M5.jar:/homes/iws/lmswar/.m2/repository/org/apache/maven/surefire/common-junit3/3.0.0-M5/common-junit3-3.0.0-M5.jar:/homes/iws/lmswar/.m2/repository/org/apache/maven/surefire/common-junit4/3.0.0-M5/common-junit4-3.0.0-M5.jar"/>
+    <property name="flightapp.testcase" value="cases"/>
+    <property name="java.vm.vendor" value="Red Hat, Inc."/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="flightapp.testcases" value="cases/transaction"/>
+    <property name="java.vendor.url" value="https://www.redhat.com/"/>
+    <property name="os.name" value="Linux"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-21-openjdk/lib"/>
+    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter /homes/iws/lmswar/344/flightapp-startercode/target/surefire 2026-02-27T18-30-51_446-jvmRun1 surefire6488665449469551970tmp surefire_08718769540897558271tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="test" value="flightapp.FlightServiceTest"/>
+    <property name="surefire.test.class.path" value="/homes/iws/lmswar/344/flightapp-startercode/target/test-classes:/homes/iws/lmswar/344/flightapp-startercode/target/classes:/homes/iws/lmswar/.m2/repository/junit/junit/4.13/junit-4.13.jar:/homes/iws/lmswar/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/homes/iws/lmswar/.m2/repository/org/postgresql/postgresql/42.7.5/postgresql-42.7.5.jar:/homes/iws/lmswar/.m2/repository/org/checkerframework/checker-qual/3.48.3/checker-qual-3.48.3.jar:/homes/iws/lmswar/.m2/repository/org/mybatis/mybatis/3.5.7/mybatis-3.5.7.jar:/homes/iws/lmswar/.m2/repository/commons-io/commons-io/2.8.0/commons-io-2.8.0.jar:/homes/iws/lmswar/344/flightapp-startercode/distributed.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/homes/iws/lmswar"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2026-01-20"/>
+    <property name="java.home" value="/usr/lib/jvm/java-21-openjdk"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/homes/iws/lmswar/344/flightapp-startercode"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="21.0.10+7-LTS"/>
+    <property name="user.name" value="lmswar"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="6.12.0-124.21.1.el10_1.x86_64"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="(Red_Hat-21.0.10.0.7-1)"/>
+    <property name="localRepository" value="/homes/iws/lmswar/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://access.redhat.com/support/cases/"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.version" value="21.0.10"/>
+    <property name="user.dir" value="/homes/iws/lmswar/344/flightapp-startercode"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Red Hat, Inc."/>
+    <property name="java.vm.version" value="21.0.10+7-LTS"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="65.0"/>
+  </properties>
+  <testcase name="runTest[0]" classname="flightapp.FlightServiceTest" time="1.28">
+    <system-out><![CDATA[Running test setup...
+... using dbconn.properties for test credentials
+... attempting to connect as lmswar@flights to server localhost
+... resetting database (ie, dropping all tables with suffix: lmswar)
+... running createTables.sql
+
+Starting tests
+Running test file: /homes/iws/lmswar/344/flightapp-startercode/cases/transaction/reservations/reservations_1UserBooks1UserLooks_Parallel.test.txt
+]]></system-out>
+  </testcase>
+  <testcase name="runTest[1]" classname="flightapp.FlightServiceTest" time="0.536">
+    <system-out><![CDATA[Running test file: /homes/iws/lmswar/344/flightapp-startercode/cases/transaction/create/create_2UsersSameName_Parallel.test.txt
+]]></system-out>
+  </testcase>
+  <testcase name="runTest[2]" classname="flightapp.FlightServiceTest" time="0.535">
+    <system-out><![CDATA[Running test file: /homes/iws/lmswar/344/flightapp-startercode/cases/transaction/create/create_2UsersDifferentName.test.txt
+]]></system-out>
+  </testcase>
+  <testcase name="runTest[3]" classname="flightapp.FlightServiceTest" time="0.986">
+    <system-out><![CDATA[Running test file: /homes/iws/lmswar/344/flightapp-startercode/cases/transaction/search/search_differentUsersSameQuery.test.txt
+]]></system-out>
+  </testcase>
+  <testcase name="runTest[4]" classname="flightapp.FlightServiceTest" time="1.054">
+    <system-out><![CDATA[Running test file: /homes/iws/lmswar/344/flightapp-startercode/cases/transaction/book/book_2Users2Flights.test.txt
+]]></system-out>
+  </testcase>
+  <testcase name="runTest[5]" classname="flightapp.FlightServiceTest" time="1.085">
+    <system-out><![CDATA[Running test file: /homes/iws/lmswar/344/flightapp-startercode/cases/transaction/book/book_1User1FlightTwice.test.txt
+]]></system-out>
+  </testcase>
+  <testcase name="runTest[6]" classname="flightapp.FlightServiceTest" time="1.021">
+    <system-out><![CDATA[Running test file: /homes/iws/lmswar/344/flightapp-startercode/cases/transaction/book/book_withoutSearch.test.txt
+]]></system-out>
+  </testcase>
+  <testcase name="runTest[7]" classname="flightapp.FlightServiceTest" time="1.059">
+    <system-out><![CDATA[Running test file: /homes/iws/lmswar/344/flightapp-startercode/cases/transaction/book/book_2Users1FlightNoCapacity.test.txt
+]]></system-out>
+  </testcase>
+  <testcase name="runTest[8]" classname="flightapp.FlightServiceTest" time="1.012">
+    <system-out><![CDATA[Running test file: /homes/iws/lmswar/344/flightapp-startercode/cases/transaction/book/book_1User2Flight1Day_Parallel.test.txt
+]]></system-out>
+  </testcase>
+  <testcase name="runTest[9]" classname="flightapp.FlightServiceTest" time="0.997">
+    <system-out><![CDATA[Running test file: /homes/iws/lmswar/344/flightapp-startercode/cases/transaction/login/login_createUserInOtherSession.test.txt
+]]></system-out>
+  </testcase>
+  <testcase name="runTest[10]" classname="flightapp.FlightServiceTest" time="0.991">
+    <system-out><![CDATA[Running test file: /homes/iws/lmswar/344/flightapp-startercode/cases/transaction/login/login_sameUserWrongPass_Parallel.test.txt
+]]></system-out>
+  </testcase>
+  <testcase name="runTest[11]" classname="flightapp.FlightServiceTest" time="0.999">
+    <system-out><![CDATA[Running test file: /homes/iws/lmswar/344/flightapp-startercode/cases/transaction/login/login_sameUsers.test.txt
+]]></system-out>
+  </testcase>
+  <testcase name="runTest[12]" classname="flightapp.FlightServiceTest" time="1.014">
+    <system-out><![CDATA[Running test file: /homes/iws/lmswar/344/flightapp-startercode/cases/transaction/login/login_differentUsers.test.txt
+]]></system-out>
+  </testcase>
+  <testcase name="runTest[13]" classname="flightapp.FlightServiceTest" time="1.06">
+    <system-out><![CDATA[Running test file: /homes/iws/lmswar/344/flightapp-startercode/cases/transaction/pay/pay_sameReservation_Parallel.test.txt
+]]></system-out>
+  </testcase>
+  <testcase name="runTest[14]" classname="flightapp.FlightServiceTest" time="1.025">
+    <system-out><![CDATA[Running test file: /homes/iws/lmswar/344/flightapp-startercode/cases/transaction/pay/pay_wrongUser.test.txt
+]]></system-out>
+  </testcase>
+</testsuite>

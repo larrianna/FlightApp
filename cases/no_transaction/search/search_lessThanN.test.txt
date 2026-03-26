@@ -1,0 +1,22 @@
+# Verify that we show all itineraries, even if we request more
+# itineraries than are available (in this case, we request 10 but
+# there are only five itineraries available)
+
+# commands to execute:
+search "Seattle, WA" "Austin, TX" 1 1 10
+quit
+*
+
+# expected output:
+Itinerary 0: 1 flight(s), 242 minutes
+    ID:4486 Day:1 Carrier:DL CarrierNum:739 Origin:'Seattle, WA' Dest:'Austin, TX' Duration:242 Capacity:133 Price:392
+Itinerary 1: 1 flight(s), 249 minutes
+    ID:3655 Day:1 Carrier:AS CarrierNum:318 Origin:'Seattle, WA' Dest:'Austin, TX' Duration:249 Capacity:48 Price:307
+Itinerary 2: 1 flight(s), 250 minutes
+    ID:3453 Day:1 Carrier:AS CarrierNum:502 Origin:'Seattle, WA' Dest:'Austin, TX' Duration:250 Capacity:149 Price:582
+Itinerary 3: 1 flight(s), 267 minutes
+    ID:4488 Day:1 Carrier:DL CarrierNum:831 Origin:'Seattle, WA' Dest:'Austin, TX' Duration:267 Capacity:133 Price:498
+Itinerary 4: 1 flight(s), 272 minutes
+    ID:3201 Day:1 Carrier:AS CarrierNum:594 Origin:'Seattle, WA' Dest:'Austin, TX' Duration:272 Capacity:222 Price:380
+Goodbye
+*

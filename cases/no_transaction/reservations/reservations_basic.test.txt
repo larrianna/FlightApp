@@ -1,0 +1,28 @@
+# Verify that we can book an itinerary and later query for it.
+
+# commands:
+create user1 user1 100000
+login user1 user1
+search "Seattle, WA" "Boston, MA" 1 1 1
+book 0
+search "Boston, MA" "Seattle, WA" 1 15 1
+book 0
+reservations
+quit
+*
+
+# expected command output:
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 299 minutes
+    ID:3607 Day:1 Carrier:AS CarrierNum:306 Origin:'Seattle, WA' Dest:'Boston, MA' Duration:299 Capacity:48 Price:555
+Booked flight(s), reservation ID: 1
+Itinerary 0: 1 flight(s), 335 minutes
+    ID:272864 Day:15 Carrier:DL CarrierNum:384 Origin:'Boston, MA' Dest:'Seattle, WA' Duration:335 Capacity:246 Price:472
+Booked flight(s), reservation ID: 2
+Reservation 1 (unpaid):
+    ID:3607 Day:1 Carrier:AS CarrierNum:306 Origin:'Seattle, WA' Dest:'Boston, MA' Duration:299 Capacity:48 Price:555
+Reservation 2 (unpaid):
+    ID:272864 Day:15 Carrier:DL CarrierNum:384 Origin:'Boston, MA' Dest:'Seattle, WA' Duration:335 Capacity:246 Price:472
+Goodbye
+*

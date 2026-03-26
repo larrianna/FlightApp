@@ -1,0 +1,140 @@
+# Same user in two terminals tries to book two different itineraries on the same day.
+# This is a day-rule race: only one booking should succeed.
+
+# commands in terminal 1:
+create user1 pass 10000
+login user1 pass
+search "Providence, RI" "Washington, DC" 0 22 4
+book 0
+quit
+*
+
+# possible output in terminal 1 (this terminal wins booking):
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 78 minutes
+    ID:421020 Day:22 Carrier:WN CarrierNum:2418 Origin:'Providence, RI' Dest:'Washington, DC' Duration:78 Capacity:143 Price:382
+Itinerary 1: 1 flight(s), 81 minutes
+    ID:422121 Day:22 Carrier:WN CarrierNum:824 Origin:'Providence, RI' Dest:'Washington, DC' Duration:81 Capacity:175 Price:194
+Itinerary 2: 1 flight(s), 82 minutes
+    ID:422887 Day:22 Carrier:YX CarrierNum:4545 Origin:'Providence, RI' Dest:'Washington, DC' Duration:82 Capacity:1 Price:567
+Itinerary 3: 1 flight(s), 85 minutes
+    ID:413470 Day:22 Carrier:OH CarrierNum:5138 Origin:'Providence, RI' Dest:'Washington, DC' Duration:85 Capacity:80 Price:115
+Booked flight(s), reservation ID: 1
+Goodbye
+|
+
+# possible output in terminal 1, this terminal loses booking:
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 78 minutes
+    ID:421020 Day:22 Carrier:WN CarrierNum:2418 Origin:'Providence, RI' Dest:'Washington, DC' Duration:78 Capacity:143 Price:382
+Itinerary 1: 1 flight(s), 81 minutes
+    ID:422121 Day:22 Carrier:WN CarrierNum:824 Origin:'Providence, RI' Dest:'Washington, DC' Duration:81 Capacity:175 Price:194
+Itinerary 2: 1 flight(s), 82 minutes
+    ID:422887 Day:22 Carrier:YX CarrierNum:4545 Origin:'Providence, RI' Dest:'Washington, DC' Duration:82 Capacity:1 Price:567
+Itinerary 3: 1 flight(s), 85 minutes
+    ID:413470 Day:22 Carrier:OH CarrierNum:5138 Origin:'Providence, RI' Dest:'Washington, DC' Duration:85 Capacity:80 Price:115
+You cannot book two flights in the same day
+Goodbye
+|
+
+# same two outcomes, but this terminal lost the create race first
+Failed to create user
+Logged in as user1
+Itinerary 0: 1 flight(s), 78 minutes
+    ID:421020 Day:22 Carrier:WN CarrierNum:2418 Origin:'Providence, RI' Dest:'Washington, DC' Duration:78 Capacity:143 Price:382
+Itinerary 1: 1 flight(s), 81 minutes
+    ID:422121 Day:22 Carrier:WN CarrierNum:824 Origin:'Providence, RI' Dest:'Washington, DC' Duration:81 Capacity:175 Price:194
+Itinerary 2: 1 flight(s), 82 minutes
+    ID:422887 Day:22 Carrier:YX CarrierNum:4545 Origin:'Providence, RI' Dest:'Washington, DC' Duration:82 Capacity:1 Price:567
+Itinerary 3: 1 flight(s), 85 minutes
+    ID:413470 Day:22 Carrier:OH CarrierNum:5138 Origin:'Providence, RI' Dest:'Washington, DC' Duration:85 Capacity:80 Price:115
+Booked flight(s), reservation ID: 1
+Goodbye
+|
+
+# same two outcomes, but this terminal lost the create race first
+Failed to create user
+Logged in as user1
+Itinerary 0: 1 flight(s), 78 minutes
+    ID:421020 Day:22 Carrier:WN CarrierNum:2418 Origin:'Providence, RI' Dest:'Washington, DC' Duration:78 Capacity:143 Price:382
+Itinerary 1: 1 flight(s), 81 minutes
+    ID:422121 Day:22 Carrier:WN CarrierNum:824 Origin:'Providence, RI' Dest:'Washington, DC' Duration:81 Capacity:175 Price:194
+Itinerary 2: 1 flight(s), 82 minutes
+    ID:422887 Day:22 Carrier:YX CarrierNum:4545 Origin:'Providence, RI' Dest:'Washington, DC' Duration:82 Capacity:1 Price:567
+Itinerary 3: 1 flight(s), 85 minutes
+    ID:413470 Day:22 Carrier:OH CarrierNum:5138 Origin:'Providence, RI' Dest:'Washington, DC' Duration:85 Capacity:80 Price:115
+You cannot book two flights in the same day
+Goodbye
+*
+
+##################### Concurrently executed commands: #####################
+
+# commands in terminal 2:
+create user1 pass 10000
+login user1 pass
+search "Providence, RI" "Washington, DC" 0 22 4
+book 1
+quit
+*
+
+# possible output in terminal 2, this terminal loses booking:
+Failed to create user
+Logged in as user1
+Itinerary 0: 1 flight(s), 78 minutes
+    ID:421020 Day:22 Carrier:WN CarrierNum:2418 Origin:'Providence, RI' Dest:'Washington, DC' Duration:78 Capacity:143 Price:382
+Itinerary 1: 1 flight(s), 81 minutes
+    ID:422121 Day:22 Carrier:WN CarrierNum:824 Origin:'Providence, RI' Dest:'Washington, DC' Duration:81 Capacity:175 Price:194
+Itinerary 2: 1 flight(s), 82 minutes
+    ID:422887 Day:22 Carrier:YX CarrierNum:4545 Origin:'Providence, RI' Dest:'Washington, DC' Duration:82 Capacity:1 Price:567
+Itinerary 3: 1 flight(s), 85 minutes
+    ID:413470 Day:22 Carrier:OH CarrierNum:5138 Origin:'Providence, RI' Dest:'Washington, DC' Duration:85 Capacity:80 Price:115
+You cannot book two flights in the same day
+Goodbye
+|
+
+# possible output in terminal 2, this terminal wins booking:
+Failed to create user
+Logged in as user1
+Itinerary 0: 1 flight(s), 78 minutes
+    ID:421020 Day:22 Carrier:WN CarrierNum:2418 Origin:'Providence, RI' Dest:'Washington, DC' Duration:78 Capacity:143 Price:382
+Itinerary 1: 1 flight(s), 81 minutes
+    ID:422121 Day:22 Carrier:WN CarrierNum:824 Origin:'Providence, RI' Dest:'Washington, DC' Duration:81 Capacity:175 Price:194
+Itinerary 2: 1 flight(s), 82 minutes
+    ID:422887 Day:22 Carrier:YX CarrierNum:4545 Origin:'Providence, RI' Dest:'Washington, DC' Duration:82 Capacity:1 Price:567
+Itinerary 3: 1 flight(s), 85 minutes
+    ID:413470 Day:22 Carrier:OH CarrierNum:5138 Origin:'Providence, RI' Dest:'Washington, DC' Duration:85 Capacity:80 Price:115
+Booked flight(s), reservation ID: 1
+Goodbye
+|
+
+# same two outcomes, but this terminal won the create race first
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 78 minutes
+    ID:421020 Day:22 Carrier:WN CarrierNum:2418 Origin:'Providence, RI' Dest:'Washington, DC' Duration:78 Capacity:143 Price:382
+Itinerary 1: 1 flight(s), 81 minutes
+    ID:422121 Day:22 Carrier:WN CarrierNum:824 Origin:'Providence, RI' Dest:'Washington, DC' Duration:81 Capacity:175 Price:194
+Itinerary 2: 1 flight(s), 82 minutes
+    ID:422887 Day:22 Carrier:YX CarrierNum:4545 Origin:'Providence, RI' Dest:'Washington, DC' Duration:82 Capacity:1 Price:567
+Itinerary 3: 1 flight(s), 85 minutes
+    ID:413470 Day:22 Carrier:OH CarrierNum:5138 Origin:'Providence, RI' Dest:'Washington, DC' Duration:85 Capacity:80 Price:115
+You cannot book two flights in the same day
+Goodbye
+|
+
+# same two outcomes, but this terminal won the create race first
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 78 minutes
+    ID:421020 Day:22 Carrier:WN CarrierNum:2418 Origin:'Providence, RI' Dest:'Washington, DC' Duration:78 Capacity:143 Price:382
+Itinerary 1: 1 flight(s), 81 minutes
+    ID:422121 Day:22 Carrier:WN CarrierNum:824 Origin:'Providence, RI' Dest:'Washington, DC' Duration:81 Capacity:175 Price:194
+Itinerary 2: 1 flight(s), 82 minutes
+    ID:422887 Day:22 Carrier:YX CarrierNum:4545 Origin:'Providence, RI' Dest:'Washington, DC' Duration:82 Capacity:1 Price:567
+Itinerary 3: 1 flight(s), 85 minutes
+    ID:413470 Day:22 Carrier:OH CarrierNum:5138 Origin:'Providence, RI' Dest:'Washington, DC' Duration:85 Capacity:80 Price:115
+Booked flight(s), reservation ID: 1
+Goodbye
+*

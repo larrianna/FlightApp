@@ -1,0 +1,11 @@
+# Verify that creating a user with a negative initial balance fails.
+
+# commands to execute:
+create test_user password123 -1
+quit
+*
+
+# expected output:
+Failed to create user
+Goodbye
+*

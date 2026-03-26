@@ -1,0 +1,46 @@
+# Verify that we can display more than one itinerary.
+
+
+# user commands:
+create user1 user1 100000
+login user1 user1
+search "Seattle, WA" "Boston, MA" 1 1 1
+book 0
+search "Seattle, WA" "New York, NY" 1 2 1
+book 0 
+search "Kahului, HI" "Los Angeles, CA" 0 6 5
+book 4
+reservations
+quit
+*
+
+# expected printouts:
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 299 minutes
+    ID:3607 Day:1 Carrier:AS CarrierNum:306 Origin:'Seattle, WA' Dest:'Boston, MA' Duration:299 Capacity:48 Price:555
+Booked flight(s), reservation ID: 1
+Itinerary 0: 1 flight(s), 304 minutes
+    ID:23927 Day:2 Carrier:DL CarrierNum:446 Origin:'Seattle, WA' Dest:'New York, NY' Duration:304 Capacity:246 Price:480
+Booked flight(s), reservation ID: 2
+Itinerary 0: 1 flight(s), 297 minutes
+    ID:95077 Day:6 Carrier:AA CarrierNum:254 Origin:'Kahului, HI' Dest:'Los Angeles, CA' Duration:297 Capacity:222 Price:159
+Itinerary 1: 1 flight(s), 297 minutes
+    ID:99970 Day:6 Carrier:DL CarrierNum:355 Origin:'Kahului, HI' Dest:'Los Angeles, CA' Duration:297 Capacity:246 Price:101
+Itinerary 2: 1 flight(s), 300 minutes
+    ID:107107 Day:6 Carrier:UA CarrierNum:419 Origin:'Kahului, HI' Dest:'Los Angeles, CA' Duration:300 Capacity:175 Price:190
+Itinerary 3: 1 flight(s), 309 minutes
+    ID:102235 Day:6 Carrier:HA CarrierNum:34 Origin:'Kahului, HI' Dest:'Los Angeles, CA' Duration:309 Capacity:377 Price:173
+Itinerary 4: 2 flight(s), 327 minutes
+    ID:102351 Day:6 Carrier:HA CarrierNum:330 Origin:'Kahului, HI' Dest:'Kona, HI' Duration:31 Capacity:100 Price:525
+    ID:102172 Day:6 Carrier:HA CarrierNum:62 Origin:'Kona, HI' Dest:'Los Angeles, CA' Duration:296 Capacity:222 Price:254
+Booked flight(s), reservation ID: 3
+Reservation 1 (unpaid):
+    ID:3607 Day:1 Carrier:AS CarrierNum:306 Origin:'Seattle, WA' Dest:'Boston, MA' Duration:299 Capacity:48 Price:555
+Reservation 2 (unpaid):
+    ID:23927 Day:2 Carrier:DL CarrierNum:446 Origin:'Seattle, WA' Dest:'New York, NY' Duration:304 Capacity:246 Price:480
+Reservation 3 (unpaid):
+    ID:102351 Day:6 Carrier:HA CarrierNum:330 Origin:'Kahului, HI' Dest:'Kona, HI' Duration:31 Capacity:100 Price:525
+    ID:102172 Day:6 Carrier:HA CarrierNum:62 Origin:'Kona, HI' Dest:'Los Angeles, CA' Duration:296 Capacity:222 Price:254
+Goodbye
+*

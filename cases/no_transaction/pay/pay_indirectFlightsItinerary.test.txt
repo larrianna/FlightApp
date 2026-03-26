@@ -1,0 +1,37 @@
+# Tests that user is charged for both flights of a two-flight itinerary
+
+# Commands:
+create user user 1000
+login user user
+search "Seattle, WA" "Boston, MA" 0 1 9
+book 8
+pay 1
+quit
+*
+
+# Expected output:
+Created user user
+Logged in as user
+Itinerary 0: 1 flight(s), 299 minutes
+    ID:3607 Day:1 Carrier:AS CarrierNum:306 Origin:'Seattle, WA' Dest:'Boston, MA' Duration:299 Capacity:48 Price:555
+Itinerary 1: 1 flight(s), 300 minutes
+    ID:4265 Day:1 Carrier:B6 CarrierNum:198 Origin:'Seattle, WA' Dest:'Boston, MA' Duration:300 Capacity:379 Price:412
+Itinerary 2: 1 flight(s), 301 minutes
+    ID:3373 Day:1 Carrier:AS CarrierNum:460 Origin:'Seattle, WA' Dest:'Boston, MA' Duration:301 Capacity:149 Price:178
+Itinerary 3: 1 flight(s), 305 minutes
+    ID:5664 Day:1 Carrier:DL CarrierNum:459 Origin:'Seattle, WA' Dest:'Boston, MA' Duration:305 Capacity:246 Price:428
+Itinerary 4: 1 flight(s), 307 minutes
+    ID:5674 Day:1 Carrier:DL CarrierNum:473 Origin:'Seattle, WA' Dest:'Boston, MA' Duration:307 Capacity:246 Price:523
+Itinerary 5: 1 flight(s), 315 minutes
+    ID:3062 Day:1 Carrier:AS CarrierNum:424 Origin:'Seattle, WA' Dest:'Boston, MA' Duration:315 Capacity:222 Price:449
+Itinerary 6: 1 flight(s), 328 minutes
+    ID:3106 Day:1 Carrier:AS CarrierNum:536 Origin:'Seattle, WA' Dest:'Boston, MA' Duration:328 Capacity:222 Price:175
+Itinerary 7: 1 flight(s), 331 minutes
+    ID:4281 Day:1 Carrier:B6 CarrierNum:398 Origin:'Seattle, WA' Dest:'Boston, MA' Duration:331 Capacity:379 Price:261
+Itinerary 8: 2 flight(s), 339 minutes
+    ID:5196 Day:1 Carrier:DL CarrierNum:953 Origin:'Seattle, WA' Dest:'Minneapolis, MN' Duration:187 Capacity:199 Price:144
+    ID:3819 Day:1 Carrier:B6 CarrierNum:836 Origin:'Minneapolis, MN' Dest:'Boston, MA' Duration:152 Capacity:153 Price:139
+Booked flight(s), reservation ID: 1
+Paid reservation: 1 remaining balance: 717
+Goodbye
+*

@@ -1,0 +1,15 @@
+Reflection:
+a. I think I can just write: ManagerEmpID INTEGER NULL and make it nullaable since I think it would be too complicated to have a special "fake manager" logic. In java I can simple run a check to make sure there is only one CEO or chair.
+b. Yes.
+c. For the life of me I couldn't figure out why any of my queries werent working even though they looked perfectly fine. I kept looking at the error message and it said something about it couldn't find the object I was referencing eventhough I was referencing the tables by their names. But actually I forgot to change the table names to include my netid. Also I forgot to only search for flights that weren't canceled so I kept getting a bunch of canceled flights in my searches.
+d. I learned how to use the comparitor tool and sorting tool in Java. When I learned intro I wasn't allowed to use those two methods so it was new to me.
+e. One thing that suprised me is how easy using prepared statements is.
+f. I guess I wonder how much more complicated this project is going to get for the next part.
+
+Analytics:
+a. 10 hours
+b. 10 hours
+c. N/A
+
+Feedback:
+a. N/A

@@ -1,0 +1,201 @@
+# Two terminals attempt to create user1, then book the same flight. One of the
+# two terminals will succeed in user creation, but both will succeed in
+# logging in.  We're testing that one terminal will succeed in booking the
+# flight and the other should fail
+
+# Commands executed in terminal 1
+create user1 user1 10000
+login user1 user1
+search "New York, NY" "Boston, MA" 0 2 2
+book 1
+quit
+*
+
+# Possible output: Terminal 1 succeeds in user creation and booking
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 55 minutes
+    ID:22055 Day:2 Carrier:B6 CarrierNum:2832 Origin:'New York, NY' Dest:'Boston, MA' Duration:55 Capacity:0 Price:394
+Itinerary 1: 1 flight(s), 59 minutes
+    ID:37543 Day:2 Carrier:YX CarrierNum:4430 Origin:'New York, NY' Dest:'Boston, MA' Duration:59 Capacity:1 Price:413
+Booked flight(s), reservation ID: 1
+Goodbye
+|
+
+# Possible output: Terminal 1 succeeds in user creation, but fails booking
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 55 minutes
+    ID:22055 Day:2 Carrier:B6 CarrierNum:2832 Origin:'New York, NY' Dest:'Boston, MA' Duration:55 Capacity:0 Price:394
+Itinerary 1: 1 flight(s), 59 minutes
+    ID:37543 Day:2 Carrier:YX CarrierNum:4430 Origin:'New York, NY' Dest:'Boston, MA' Duration:59 Capacity:1 Price:413
+Booking failed
+Goodbye
+|
+
+# Possible output: Terminal 1 fails to create user (Terminal 2 already has
+# created it), but succeeds in booking
+Failed to create user
+Logged in as user1
+Itinerary 0: 1 flight(s), 55 minutes
+    ID:22055 Day:2 Carrier:B6 CarrierNum:2832 Origin:'New York, NY' Dest:'Boston, MA' Duration:55 Capacity:0 Price:394
+Itinerary 1: 1 flight(s), 59 minutes
+    ID:37543 Day:2 Carrier:YX CarrierNum:4430 Origin:'New York, NY' Dest:'Boston, MA' Duration:59 Capacity:1 Price:413
+Booked flight(s), reservation ID: 1
+Goodbye
+|
+
+# Possible output: Terminal 1 fails to create user (Terminal 2 already has
+# created it), and fails booking
+Failed to create user
+Logged in as user1
+Itinerary 0: 1 flight(s), 55 minutes
+    ID:22055 Day:2 Carrier:B6 CarrierNum:2832 Origin:'New York, NY' Dest:'Boston, MA' Duration:55 Capacity:0 Price:394
+Itinerary 1: 1 flight(s), 59 minutes
+    ID:37543 Day:2 Carrier:YX CarrierNum:4430 Origin:'New York, NY' Dest:'Boston, MA' Duration:59 Capacity:1 Price:413
+Booking failed
+Goodbye
+|
+
+# Possible output: Terminal 1 succeeds in user creation *and* booking
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 55 minutes
+    ID:22055 Day:2 Carrier:B6 CarrierNum:2832 Origin:'New York, NY' Dest:'Boston, MA' Duration:55 Capacity:0 Price:394
+Itinerary 1: 1 flight(s), 59 minutes
+    ID:37543 Day:2 Carrier:YX CarrierNum:4430 Origin:'New York, NY' Dest:'Boston, MA' Duration:59 Capacity:1 Price:413
+Booked flight(s), reservation ID: 1
+Goodbye
+|
+
+# Possible output: Terminal 1 succeeds in user creation, but fails booking
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 55 minutes
+    ID:22055 Day:2 Carrier:B6 CarrierNum:2832 Origin:'New York, NY' Dest:'Boston, MA' Duration:55 Capacity:0 Price:394
+Itinerary 1: 1 flight(s), 59 minutes
+    ID:37543 Day:2 Carrier:YX CarrierNum:4430 Origin:'New York, NY' Dest:'Boston, MA' Duration:59 Capacity:1 Price:413
+You cannot book two flights in the same day
+Goodbye
+|
+
+# Possible output: Terminal 1 fails to create user (Terminal 2 already has
+# created it), but succeeds in booking
+Failed to create user
+Logged in as user1
+Itinerary 0: 1 flight(s), 55 minutes
+    ID:22055 Day:2 Carrier:B6 CarrierNum:2832 Origin:'New York, NY' Dest:'Boston, MA' Duration:55 Capacity:0 Price:394
+Itinerary 1: 1 flight(s), 59 minutes
+    ID:37543 Day:2 Carrier:YX CarrierNum:4430 Origin:'New York, NY' Dest:'Boston, MA' Duration:59 Capacity:1 Price:413
+Booked flight(s), reservation ID: 1
+Goodbye
+|
+
+# Possible output: Terminal 1 fails to create user (Terminal 2 already has
+# created it), and also fails booking
+Failed to create user
+Logged in as user1
+Itinerary 0: 1 flight(s), 55 minutes
+    ID:22055 Day:2 Carrier:B6 CarrierNum:2832 Origin:'New York, NY' Dest:'Boston, MA' Duration:55 Capacity:0 Price:394
+Itinerary 1: 1 flight(s), 59 minutes
+    ID:37543 Day:2 Carrier:YX CarrierNum:4430 Origin:'New York, NY' Dest:'Boston, MA' Duration:59 Capacity:1 Price:413
+You cannot book two flights in the same day
+Goodbye
+*
+
+##################### Concurrently executed commands: #####################
+# Terminal 2
+create user1 user1 10000
+login user1 user1
+search "New York, NY" "Boston, MA" 0 2 2
+book 1
+quit
+*
+
+# Possible output: Terminal 2 fails in user creation and booking
+Failed to create user
+Logged in as user1
+Itinerary 0: 1 flight(s), 55 minutes
+    ID:22055 Day:2 Carrier:B6 CarrierNum:2832 Origin:'New York, NY' Dest:'Boston, MA' Duration:55 Capacity:0 Price:394
+Itinerary 1: 1 flight(s), 59 minutes
+    ID:37543 Day:2 Carrier:YX CarrierNum:4430 Origin:'New York, NY' Dest:'Boston, MA' Duration:59 Capacity:1 Price:413
+Booking failed
+Goodbye
+|
+
+# Alternative output: Terminal 2 fails in user creation, but succeeds in booking
+Failed to create user
+Logged in as user1
+Itinerary 0: 1 flight(s), 55 minutes
+    ID:22055 Day:2 Carrier:B6 CarrierNum:2832 Origin:'New York, NY' Dest:'Boston, MA' Duration:55 Capacity:0 Price:394
+Itinerary 1: 1 flight(s), 59 minutes
+    ID:37543 Day:2 Carrier:YX CarrierNum:4430 Origin:'New York, NY' Dest:'Boston, MA' Duration:59 Capacity:1 Price:413
+Booked flight(s), reservation ID: 1
+Goodbye
+|
+
+# Alternative output: Terminal 2 succeeds in user creation, but fails booking
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 55 minutes
+    ID:22055 Day:2 Carrier:B6 CarrierNum:2832 Origin:'New York, NY' Dest:'Boston, MA' Duration:55 Capacity:0 Price:394
+Itinerary 1: 1 flight(s), 59 minutes
+    ID:37543 Day:2 Carrier:YX CarrierNum:4430 Origin:'New York, NY' Dest:'Boston, MA' Duration:59 Capacity:1 Price:413
+Booking failed
+Goodbye
+|
+
+# Alternative output: Terminal 2 succeeds in user creation and booking
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 55 minutes
+    ID:22055 Day:2 Carrier:B6 CarrierNum:2832 Origin:'New York, NY' Dest:'Boston, MA' Duration:55 Capacity:0 Price:394
+Itinerary 1: 1 flight(s), 59 minutes
+    ID:37543 Day:2 Carrier:YX CarrierNum:4430 Origin:'New York, NY' Dest:'Boston, MA' Duration:59 Capacity:1 Price:413
+Booked flight(s), reservation ID: 1
+Goodbye
+|
+
+# Alternative output: Terminal 2 fails in user creation and booking
+Failed to create user
+Logged in as user1
+Itinerary 0: 1 flight(s), 55 minutes
+    ID:22055 Day:2 Carrier:B6 CarrierNum:2832 Origin:'New York, NY' Dest:'Boston, MA' Duration:55 Capacity:0 Price:394
+Itinerary 1: 1 flight(s), 59 minutes
+    ID:37543 Day:2 Carrier:YX CarrierNum:4430 Origin:'New York, NY' Dest:'Boston, MA' Duration:59 Capacity:1 Price:413
+You cannot book two flights in the same day
+Goodbye
+|
+
+# Alternative output: Terminal 2 fails in user creation, but succeeds booking
+Failed to create user
+Logged in as user1
+Itinerary 0: 1 flight(s), 55 minutes
+    ID:22055 Day:2 Carrier:B6 CarrierNum:2832 Origin:'New York, NY' Dest:'Boston, MA' Duration:55 Capacity:0 Price:394
+Itinerary 1: 1 flight(s), 59 minutes
+    ID:37543 Day:2 Carrier:YX CarrierNum:4430 Origin:'New York, NY' Dest:'Boston, MA' Duration:59 Capacity:1 Price:413
+Booked flight(s), reservation ID: 1
+Goodbye
+|
+
+# Alternative output: Terminal 2 succeeds in user creation, but fails booking
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 55 minutes
+    ID:22055 Day:2 Carrier:B6 CarrierNum:2832 Origin:'New York, NY' Dest:'Boston, MA' Duration:55 Capacity:0 Price:394
+Itinerary 1: 1 flight(s), 59 minutes
+    ID:37543 Day:2 Carrier:YX CarrierNum:4430 Origin:'New York, NY' Dest:'Boston, MA' Duration:59 Capacity:1 Price:413
+You cannot book two flights in the same day
+Goodbye
+|
+
+# Alternative output: Terminal 2 succeeds in user creation and booking
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 55 minutes
+    ID:22055 Day:2 Carrier:B6 CarrierNum:2832 Origin:'New York, NY' Dest:'Boston, MA' Duration:55 Capacity:0 Price:394
+Itinerary 1: 1 flight(s), 59 minutes
+    ID:37543 Day:2 Carrier:YX CarrierNum:4430 Origin:'New York, NY' Dest:'Boston, MA' Duration:59 Capacity:1 Price:413
+Booked flight(s), reservation ID: 1
+Goodbye
+*

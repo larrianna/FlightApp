@@ -1,0 +1,37 @@
+# Verify that faster indirect itineraries are sorted into a list of (possibly
+# slower) direct itineraries.  Specifically, this particular query:
+#     - has 7 direct itineraries and 1 indirect itinerary that is faster
+#       than 2 of the direct ones
+#     - but the user requests 8 itineraries, allowing indirect ones
+#     - the result should be 8 itineraries, but the indirect one should be
+#       sorted into the middle of the direct ones
+
+# user commands:
+create user1 user1 100000
+login user1 user1
+search "Austin, TX" "Seattle, WA" 0 15 8
+quit
+*
+
+# expected user output:
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 251 minutes
+    ID:270298 Day:15 Carrier:AS CarrierNum:505 Origin:'Austin, TX' Dest:'Seattle, WA' Duration:251 Capacity:149 Price:536
+Itinerary 1: 1 flight(s), 257 minutes
+    ID:271817 Day:15 Carrier:DL CarrierNum:831 Origin:'Austin, TX' Dest:'Seattle, WA' Duration:257 Capacity:153 Price:465
+Itinerary 2: 1 flight(s), 260 minutes
+    ID:269938 Day:15 Carrier:AS CarrierNum:313 Origin:'Austin, TX' Dest:'Seattle, WA' Duration:260 Capacity:222 Price:532
+Itinerary 3: 1 flight(s), 263 minutes
+    ID:270465 Day:15 Carrier:AS CarrierNum:595 Origin:'Austin, TX' Dest:'Seattle, WA' Duration:263 Capacity:48 Price:214
+Itinerary 4: 1 flight(s), 264 minutes
+    ID:270378 Day:15 Carrier:AS CarrierNum:723 Origin:'Austin, TX' Dest:'Seattle, WA' Duration:264 Capacity:149 Price:169
+Itinerary 5: 2 flight(s), 271 minutes
+    ID:272241 Day:15 Carrier:DL CarrierNum:2873 Origin:'Austin, TX' Dest:'Salt Lake City, UT' Duration:165 Capacity:145 Price:580
+    ID:273808 Day:15 Carrier:DL CarrierNum:2998 Origin:'Salt Lake City, UT' Dest:'Seattle, WA' Duration:106 Capacity:222 Price:558
+Itinerary 6: 1 flight(s), 282 minutes
+    ID:271513 Day:15 Carrier:DL CarrierNum:780 Origin:'Austin, TX' Dest:'Seattle, WA' Duration:282 Capacity:133 Price:399
+Itinerary 7: 1 flight(s), 292 minutes
+    ID:271529 Day:15 Carrier:DL CarrierNum:739 Origin:'Austin, TX' Dest:'Seattle, WA' Duration:292 Capacity:133 Price:125
+Goodbye
+*
